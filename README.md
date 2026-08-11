@@ -1,49 +1,48 @@
 # Viva La Colifata
 
-Repositorio local inicial para el sitio estático de https://vivalacolifata.org.
+Repositorio de la versión estática inicial de https://vivalacolifata.org.
 
 ## Origen y propósito
 
+- El sitio original fue construido con WordPress 7.0.3 y Elementor 3.25.11.
 - Este repositorio comenzó como un snapshot estático de la web en vivo.
-- La página original está construida con WordPress 7.0.3 y Elementor 3.25.11.
-- El objetivo es mantener la identidad visual del sitio mientras se limpia y optimiza el contenido para un despliegue estático simple.
-- No se agregó ningún framework ni proceso de build adicional hasta que haya una justificación clara.
+- El objetivo es preservar la identidad visual y convertir la página en un sitio estático ligero, sin agregar frameworks o procesos de build innecesarios.
 
 ## Estado actual
 
-- Branch de trabajo: `preview/static-import`
-- Export estático alojado en `export/vivalacolifata.org`
-- Captura móvil guardada en `docs/screenshots/mobile-preview.png`
-- No hay commits previos; este repositorio se inició en este workspace recién.
+- Branch principal: `main`
+- Snapshot estático importado y movido al raíz del repositorio.
+- Captura de referencia móvil en `docs/screenshots/mobile-preview.png`.
 
 ## Estructura principal
 
-- `export/vivalacolifata.org/index.html` — página principal en español
-- `export/vivalacolifata.org/en/index.html` — versión en inglés
-- `export/vivalacolifata.org/fr/index.html` — versión en francés
-- `export/vivalacolifata.org/robots.txt`
-- `export/vivalacolifata.org/wp-content/...` — recursos CSS/JS heredados de WordPress/Elementor
+- `index.html` — página principal en español
+- `en/index.html` — versión en inglés
+- `fr/index.html` — versión en francés
+- `robots.txt`
+- `wp-content/...` — recursos CSS/JS heredados de WordPress/Elementor necesarios para el render actual
+- `wp-includes/...` — dependencias JS locales (jQuery) incluidas en el snapshot
 - `docs/screenshots/` — capturas de referencia visual
 
 ## Cómo previsualizar localmente
 
 ```bash
 cd vivalacolifata
-python3 -m http.server 8000 --directory export/vivalacolifata.org
+python3 -m http.server 8000
 ```
 
 Luego abrir `http://localhost:8000/`.
 
-## Observaciones iniciales
+## Observaciones clave
 
-- La exportación mantiene los enlaces de idioma locales (`index.html`, `en/index.html`, `fr/index.html`).
-- El sitio usa recursos externos para Google Fonts, SoundCloud, PayPal, Drive, redes sociales y streaming de audio.
-- Las tres versiones de idioma ya están presentes, pero el HTML exportado requiere revisión de SEO (descripciones, Open Graph, canonical y hreflang) y de semántica (`main`, encabezados y `alt`).
-- Hay recursos de WordPress/Elementor que deben evaluarse para limpieza, incluyendo scripts y estilos no necesarios en un sitio estático simple.
+- La navegación de idioma ya funciona con `index.html`, `en/index.html` y `fr/index.html`.
+- El sitio depende de recursos estáticos locales de Elementor, el tema Lalita/Madhura y Google Fonts.
+- Actualmente hay scripts inline de Elementor y WordPress que deben revisarse y posiblemente limpiarse para optimizar el sitio.
+- También se observó una inyección de Cloudflare en el HTML exportado; esa parte no es necesaria para el despliegue estático.
 
 ## Próximos pasos
 
-1. Auditar el HTML exportado y corregir SEO multilingüe.
-2. Revisar enlaces internos y rutas relativas.
-3. Limpiar CSS/JS innecesarios de WordPress/Elementor.
-4. Verificar que el selector de idioma y la navegación responsive funcionen sin romper el diseño.
+1. Auditar y limpiar HTML/SEO multilingüe.
+2. Depurar rutas relativas e internalización de enlaces.
+3. Evaluar y reducir CSS/JS de WordPress/Elementor si no es necesario.
+4. Verificar previews posteriores en Vercel usando la rama `main`.
