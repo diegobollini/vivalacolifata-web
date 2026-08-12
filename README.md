@@ -20,8 +20,7 @@ Repositorio de la versión estática inicial de https://vivalacolifata.org.
 - `en/index.html` — versión en inglés
 - `fr/index.html` — versión en francés
 - `robots.txt`
-- `wp-content/...` — recursos CSS/JS heredados de WordPress/Elementor necesarios para el render actual
-- `wp-includes/...` — dependencias JS locales (jQuery) incluidas en el snapshot
+- `wp-content/...` — estilos de Elementor, recursos de los temas e imágenes necesarios para el render actual
 - `docs/screenshots/` — capturas de referencia visual
 
 ## Cómo previsualizar localmente
@@ -45,13 +44,11 @@ la señal pública responde como audio de Radio La Colifata.
 ## Observaciones clave
 
 - La navegación de idioma ya funciona con `index.html`, `en/index.html` y `fr/index.html`.
-- El sitio depende de recursos estáticos locales de Elementor, el tema Lalita/Madhura y Google Fonts.
-- Actualmente hay scripts inline de Elementor y WordPress que deben revisarse y posiblemente limpiarse para optimizar el sitio.
-- También se observó una inyección de Cloudflare en el HTML exportado; esa parte no es necesaria para el despliegue estático.
+- El sitio conserva los estilos estáticos de Elementor y los recursos de los temas Lalita/Madhura, pero ya no carga jQuery ni el runtime JavaScript de Elementor.
+- La interacción se resuelve con los pequeños scripts del tema para el menú, accesibilidad y regreso al inicio.
 
 ## Próximos pasos
 
-1. Auditar y limpiar HTML/SEO multilingüe.
-2. Depurar rutas relativas e internalización de enlaces.
-3. Evaluar y reducir CSS/JS de WordPress/Elementor si no es necesario.
-4. Verificar previews posteriores en Vercel usando la rama `main`.
+1. Evaluar una reducción adicional del CSS heredado sin alterar el diseño.
+2. Optimizar imágenes y carga de fuentes.
+3. Verificar cada cambio en las tres versiones antes de publicarlo desde `main`.
