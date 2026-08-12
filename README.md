@@ -33,6 +33,15 @@ python3 -m http.server 8000
 
 Luego abrir `http://localhost:8000/`.
 
+## Validación del stream
+
+```bash
+python3 scripts/check_stream.py
+```
+
+La comprobación valida la URL configurada en las tres páginas y confirma que
+la señal pública responde como audio de Radio La Colifata.
+
 ## Observaciones clave
 
 - La navegación de idioma ya funciona con `index.html`, `en/index.html` y `fr/index.html`.
